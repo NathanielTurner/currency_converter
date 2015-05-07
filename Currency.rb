@@ -29,6 +29,11 @@ class Currency
       return self.code - another.code
     end
   end
+
+  def *(number)
+    @amount = amount * number
+    return self
+  def
 =begin
 Currency objects:
 
