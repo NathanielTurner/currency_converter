@@ -1,24 +1,27 @@
 class Currency
-  attr_accessor :amount, :currency_code
-  def initialize(amount, currency_code)
+  attr_accessor :amount, :code
+  def initialize(amount, code)
     @amount = amount
-    @currency_code = currency_code
+    @code = code
   end
 
-  def ==(another_currency)
-    if (self.amount == another_currency.amount) &&
-       (self.currency_code == another_currency.currency_code)
+  def ==(another)
+    if (self.amount == another.amount) &&
+       (self.code == another.code)
        return true
     end
   end
 
-  def !=(another_currency)
-    if (self.amount != another_currency.amount) ||
-       (self.currency_code != another_currency.currency_code)
+  def !=(another)
+    if (self.amount != another.amount) ||
+       (self.code != another.code)
     end
   end
 
-  def
+  def +(another)
+    if (self.code == another.code)
+      return self.code + another.code
+    end
   end
 
 =begin
