@@ -24,6 +24,11 @@ class Currency
     end
   end
 
+  def +(another)
+    if (self.code == another.code)
+      return self.code - another.code
+    end
+  end
 =begin
 Currency objects:
 
