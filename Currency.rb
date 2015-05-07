@@ -1,13 +1,21 @@
 class Currency
+  attr_accessor :amount, :currency_code
   def initialize(amount, currency_code)
     @amount = amount
     @currency_code = currency_code
   end
 
-  def
+  def ==(another_currency)
+    if (self.amount == another_currency.amount) &&
+       (self.currency_code == another_currency.currency_code)
+       return true
+    end
   end
 
-  def
+  def !=(another_currency)
+    if (self.amount != another_currency.amount) ||
+       (self.currency_code != another_currency.currency_code)
+    end
   end
 
   def
@@ -22,6 +30,8 @@ and a currency code
 Should equal another Currency
 object with the same amount and
 currency code
+def ==(other currency)
+self.amount self.code
 
 Should NOT equal another Currency
 object with different amount or
