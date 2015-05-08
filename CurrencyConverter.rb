@@ -13,9 +13,18 @@ class CurrencyConverter
   end
 
   def superconvert(currency, code)
-      converted = currency * (rates[code] / rates[currency.code])
-      return converted
+    if rates.include?(code) == false
+      raise "UnknownCurrencyCodeError"
+    end
+    converted = currency * (rates[code] / rates[currency.code])
+    return converted
+    rescue
+    puts "UnknownCurrencyCodeError"
   end
+end
+
+begin
+rescue
 end
 
 =begin
