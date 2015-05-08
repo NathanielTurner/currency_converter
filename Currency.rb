@@ -15,12 +15,10 @@ class Currency
     end
   end
 
-  def ==(another)
+  def == (another)
     if (@amount == another.amount) &&
        (@code == another.code)
-       return true
-    else
-      return false
+       return Currency.new(another.amount, another.code)
     end
   end
 
@@ -34,15 +32,21 @@ class Currency
   end
 
   def +(another)
-    if (@code == another.code)
-      return Currency.new(amount + another.amount, @code)
+    if (@code != another.code)
+      raise "UnknownCurrencyCodeError"
     end
+    return Currency.new(amount + another.amount, @code)
+    rescue
+      puts "DifferentCurrencyCodeError"
   end
 
   def -(another)
-    if (@code == another.code)
-      return Currency.new(@amount - another.amount, @code)
+    if (@code != another.code)
+      raise "UnknownCurrencyCodeError"
     end
+    return Currency.new(@amount - another.amount, @code)
+    rescue
+      puts "DifferentCurrencyCodeError"
   end
 
   def *(number)
