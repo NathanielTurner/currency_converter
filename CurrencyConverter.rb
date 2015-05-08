@@ -1,12 +1,25 @@
+require "./Currency.rb"
+
 class CurrencyConverter
-  def initialize(value)
-    @value = value
+  attr_accessor :rates
+  def initialize(rates)
+    {"usd" => 1.0, "eur" => 0.74},
+    @rates = rates
   end
 
-  def
+  def convert(currency, code)
+    equivalent = Currency.new(currency.amount, code) == currency
+    return equivalent
   end
 
-  def
+  def zanzibar(currency, code)
+    if currency.code = "usd"
+      conversion = currency * rates[code]
+      return conversion
+    else
+      value = rates[code]
+      conversion =  rates[currency.code] 
+    end
   end
 
   def
