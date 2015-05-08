@@ -2,8 +2,8 @@ require "./Currency.rb"
 
 class CurrencyConverter
   attr_accessor :rates
+
   def initialize(rates)
-    {"usd" => 1.0, "eur" => 0.74},
     @rates = rates
   end
 
@@ -12,18 +12,11 @@ class CurrencyConverter
     return equivalent
   end
 
-  def zanzibar(currency, code)
-    if currency.code = "usd"
-      conversion = currency * rates[code]
-      return conversion
-    else
-      value = rates[code]
-      conversion =  rates[currency.code] 
-    end
+  def superconvert(currency, code)
+      converted = currency * (rates[code] / rates[currency.code])
+      return converted
   end
-
-  def
-  end
+end
 
 =begin
 CurrencyConverter objects:
