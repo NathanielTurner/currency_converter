@@ -1,39 +1,54 @@
 class Currency
   attr_accessor :amount, :code
-  def initialize(amount, code)
-    @amount = amount
-    @code = code
+
+  def initialize(amount, code = nil)
+    if code != nil
+      @amount = amount.to_f
+      @code = code
+    else
+      symbols = {"usd" => "$","uer" => "€","gbp" => "£","crc" => "₡",
+      "krw" => "₩","ngn" => "₦","jpy" => "¥"}
+      amount.delete(' ')
+      combo = amount.split('', 2)
+      @amount = combo[1].to_f
+      @code = symbols.key(combo[0])
+    end
   end
 
   def ==(another)
-    if (self.amount == another.amount) &&
-       (self.code == another.code)
+    if (@amount == another.amount) &&
+       (@code == another.code)
        return true
+    else
+      return false
     end
   end
 
   def !=(another)
-    if (self.amount != another.amount) ||
-       (self.code != another.code)
+    if (@amount != another.amount) ||
+       (@code != another.code)
+       return true
+    else
+      return false
     end
   end
 
   def +(another)
-    if (self.code == another.code)
-      return self.code + another.code
+    if (@code == another.code)
+      return Currency.new(amount + another.amount, @code)
     end
   end
 
-  def +(another)
-    if (self.code == another.code)
-      return self.code - another.code
+  def -(another)
+    if (@code == another.code)
+      return Currency.new(@amount - another.amount, @code)
     end
   end
 
   def *(number)
-    @amount = amount * number
-    return self
-  def
+    return Currency.new(@amount * number, @code)
+  end
+end
 =begin
 Currency objects:
 
