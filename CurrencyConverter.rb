@@ -1,4 +1,5 @@
 require "./Currency.rb"
+require "./CustomErrorHandling.rb"
 
 class CurrencyConverter
   attr_accessor :rates
@@ -14,17 +15,11 @@ class CurrencyConverter
 
   def superconvert(currency, code)
     if rates.include?(code) == false
-      raise "UnknownCurrencyCodeError"
+      raise UnknownCurrencyCodeError
     end
     converted = currency * (rates[code] / rates[currency.code])
     return converted
-    rescue
-    puts "UnknownCurrencyCodeError"
   end
-end
-
-begin
-rescue
 end
 
 =begin
