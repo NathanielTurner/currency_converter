@@ -1,3 +1,5 @@
+require "./CustomErrorHandling.rb"
+
 class Currency
   attr_accessor :amount, :code
 
@@ -33,20 +35,16 @@ class Currency
 
   def +(another)
     if (@code != another.code)
-      raise "UnknownCurrencyCodeError"
+      raise DifferentCurrencyCodeError
     end
     return Currency.new(amount + another.amount, @code)
-    rescue
-      puts "DifferentCurrencyCodeError"
   end
 
   def -(another)
     if (@code != another.code)
-      raise "UnknownCurrencyCodeError"
+      raise DifferentCurrencyCodeError
     end
     return Currency.new(@amount - another.amount, @code)
-    rescue
-      puts "DifferentCurrencyCodeError"
   end
 
   def *(number)
@@ -86,6 +84,8 @@ currency codes.
 Should be able to be multiplied
 by a Fixnum or Float and return
 a Currency object
+
+meep
 
 Currency.new should be able to
 take one argument with a currency
