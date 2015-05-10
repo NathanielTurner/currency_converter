@@ -9,8 +9,9 @@ class CurrencyConverter
   end
 
   def convert(currency, code)
-    equivalent = Currency.new(currency.amount, code) == currency
-    return equivalent
+    if currency.code == code
+      return currency == currency
+    end
   end
 
   def superconvert(currency, code)
